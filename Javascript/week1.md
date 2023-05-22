@@ -19,7 +19,7 @@
     -   let 과 const 는 같은 이름의 변수를 두 번 선언하면 오류가 발생한다.
     -   const 는 선언 후에 값을 변경할 수 없는 상수를 선언할 때 사용.
 
-#### 데이터 타입과 형 변환
+### 데이터 타입
 
 1. 숫자(Number)
     - 정수형 숫자(Integer)
@@ -97,3 +97,84 @@
 
 7. 배열(Array)
     - 여러 개의 데이터를 순서대로 저장하는 데이터 타입.
+
+### 형 변환
+
+1. 암시적 형 변환
+
+    - 자동으로 수행되는 형 변환, 일반적으로 연산자 사용시 발생.
+
+    ```javascript
+    console.log(1 + '2'); // "12"
+    console.log('1' + true); // "1true"
+    console.log('1' + {}); // "1[object Object]"
+    console.log('1' + null); // "1null"
+    console.log('1' + undefined); // "1undefined"
+    ```
+
+    ***
+
+    ```javascript
+    console.log(1 - '2'); // -1
+    console.log('2' * '3'); // 6
+    console.log(4 + +'5'); // 9
+    ```
+
+    ***
+
+    ```javascript
+    console.log(Boolean(0)); // false
+    console.log(Boolean('')); // false
+    console.log(Boolean(null)); // false
+    console.log(Boolean(undefined)); // false
+    console.log(Boolean(NaN)); // false
+    console.log(Boolean('false')); // true
+    console.log(Boolean({})); // true
+    ```
+
+2. 명시적 형 변환
+
+    - 개발자가 직접 자료형을 변환.
+
+    ```javascript
+    console.log(String(123)); // "123"
+    console.log(String(true)); // "true"
+    console.log(String(false)); // "false"
+    console.log(String(null)); // "null"
+    console.log(String(undefined)); // "undefined"
+    console.log(String({})); // "[object Object]"
+    ```
+
+    ***
+
+    ```javascript
+    console.log(Number('123')); // 123
+    console.log(Number('')); // 0
+    console.log(Number(' ')); // 0
+    console.log(Number(true)); // 1
+    console.log(Number(false)); // 0
+    ```
+
+### 함수
+
+1. 함수 정의
+
+    - 함수 선언문
+
+    ```javascript
+    function add(x, y) {
+        return x + y;
+    }
+    console.log(add(2, 3)); // 5
+    ```
+
+    - 함수 표현식
+
+    ```javascript
+    let add = function (x, y) {
+        return x + y;
+    };
+    console.log(add(2, 3)); // 5
+    ```
+
+2. 화살표 함수
