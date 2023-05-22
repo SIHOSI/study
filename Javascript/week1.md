@@ -19,4 +19,24 @@
     -   let 과 const 는 같은 이름의 변수를 두 번 선언하면 오류가 발생한다.
     -   const 는 선언 후에 값을 변경할 수 없는 상수를 선언할 때 사용.
 
-### 데이터 타입과 형 변환
+#### 데이터 타입과 형 변환
+
+1. 숫자(Number)
+    - 정수형 숫자(Integer)
+    - 실수형 숫자(Float)
+    - 지수형 숫자(Exponential)
+    - NaN(Not a Number)
+    - Infinity
+2. 문자열(String)
+
+    - 문자열 길이(length) 확인하기
+
+    ````javascript
+    let str = "Hello, world!";
+    console.log(str.length); ```
+
+    - 문자열 결합(concatenation)
+    ```javascript
+    let str1 = "Hello, ";
+    let str2 = "world!";```
+    ````
