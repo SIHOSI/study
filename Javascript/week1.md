@@ -178,3 +178,17 @@
     ```
 
 2. 화살표 함수
+    - 기본적인 화살표 함수
+    ```javascript
+    let add = (x, y) => {
+        return x + y;
+    };
+    console.log(add(2, 3)); // 5
+    ```
+    - 한 줄로 된 화살표 함수
+    ```javascript
+    let add = (x, y) => x + y;
+    console.log(add(2, 3)); // 5
+    ```
+
+---
