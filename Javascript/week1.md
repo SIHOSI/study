@@ -31,12 +31,49 @@
 
     - 문자열 길이(length) 확인하기
 
-    ````javascript
-    let str = "Hello, world!";
-    console.log(str.length); ```
+    ```javascript
+    let str = 'Hello, world!';
+    console.log(str.length);
+    ```
 
     - 문자열 결합(concatenation)
+
     ```javascript
-    let str1 = "Hello, ";
-    let str2 = "world!";```
-    ````
+    let str1 = 'Hello, ';
+    let str2 = 'world!';
+    let result = str1.concat(str2);
+    console.log(result); // "Hello, world!"
+    ```
+
+    - 문자열 자르기(substr, slice)
+
+    ```javascript
+    let str = 'Hello, world!';
+    console.log(str.substr(7, 5)); // "world"
+    console.log(str.slice(7, 12)); // "world"
+    ```
+
+    - 문자열 검색(search)
+
+    ```javascript
+    let str = 'Hello, world!';
+    console.log(str.search('world')); // 7
+    ```
+
+    - 문자열 대체(replace)
+
+    ```javascript
+    let str = 'Hello, world!';
+    let result = str.replace('world', 'JavaScript');
+    console.log(result); // "Hello, JavaScript!"
+    ```
+
+    - 문자열 분할(split)
+
+    ```javascript
+    let str = 'apple, banana, kiwi';
+    let result = str.split(',');
+    console.log(result); // ["apple", " banana", " kiwi"]
+    ```
+
+3. 불리언(Boolean)
