@@ -99,3 +99,25 @@
     ```javascript
     person.name; //홍길동
     ```
+
+-   객체 비교
+
+    -   객체를 비교할 때 일반적으로 === 연산자 사용할 수 없다.
+        대신 JSON.stringify()함수 사용하여 객체를 문자열로 변환 후 비교한다.
+
+    ```javascript
+    console.log(person1 === person2); // false
+    console.log(JSON.stringify(person1) === JSON.stringify(person2)); // true
+    ```
+
+-   기본적인 배열 생성
+
+    ```javascript
+    let fruits = ['사과', '바나나', '오렌지'];
+    ```
+
+    -   배열의 크기 지정
+
+    ```javascript
+    let numbers = new Array(5);
+    ```
