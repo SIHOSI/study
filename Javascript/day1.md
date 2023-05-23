@@ -80,7 +80,7 @@
 
     - 불리언은 참(true)과 거짓(false)을 나타내는 데이터 타입.
 
-    * **0, " ", NaN, null, undefined** 는 false.
+    * **0, "", NaN, null, undefined** 는 false.
     * 빈 객체 {}는 true.
 
 4. undefined
