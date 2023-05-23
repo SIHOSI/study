@@ -82,7 +82,7 @@
     };
     ```
 
-    --- 생성자 함수를 사용한 객체 생성
+    -   생성자 함수를 사용한 객체 생성
 
     ```javascript
     function Person(name, age, gender) {
