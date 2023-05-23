@@ -93,3 +93,9 @@
     let person1 = new Person('홍길동', 30, '남자');
     let person2 = new Person('홍길순', 25, '여자');
     ```
+
+-   객체 속성 접근
+
+    ```javascript
+    person.name; //홍길동
+    ```
