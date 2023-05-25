@@ -28,16 +28,16 @@
 - 왼쪽 피 연산자가 오른쪽 객체의 프로퍼티 이름일 경우 true를 반환.
 
     >
-        ```javascript
-        let point = {x: 1, y: 1};
-        "x" in point // true
-        "toString" in point // true, 객체는 toString메소드를 상속한다.
+    ```javascript
+    let point = {x: 1, y: 1};
+    "x" in point // true
+    "toString" in point // true, 객체는 toString메소드를 상속한다.
 
-        let data = [7, 8, 9];
-        "0" in data // true , 인덱스 "0"이 존재
-        1 in data // true, 숫자는 문자열로 변황되고 인덱스 "1"이 존재
-        3 in data // false
-        ```
+    let data = [7, 8, 9];
+    "0" in data // true , 인덱스 "0"이 존재
+    1 in data // true, 숫자는 문자열로 변황되고 인덱스 "1"이 존재
+    3 in data // false
+    ```
 
 
 ### instanceof 연산자
@@ -45,15 +45,15 @@
 - 왼쪽 객체가 오른쪽 클래스의 인스턴스라면 true를 반환.
 
     >
-        ```javascript
-        let d = new Date();
-        d instanceof Date // true
-        d instanceof Object // true, 객체는 모두 Object의 인스턴스
-        d instanceof Number // false
-        let a = [1, 2, 3];
-        a instanceof Array 
-        a instanceof Object // true, 배열은 모두 객체
-        ```
+    ```javascript
+    let d = new Date();
+    d instanceof Date // true
+    d instanceof Object // true, 객체는 모두 Object의 인스턴스
+    d instanceof Number // false
+    let a = [1, 2, 3];
+    a instanceof Array 
+    a instanceof Object // true, 배열은 모두 객체
+    ```
 
 
 # 논리 표현식
