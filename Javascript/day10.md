@@ -45,6 +45,7 @@ let a = new Date();
 - 두 번째 객체를 **프로토 타입**이라 부르며, 프로토타입에서 프로퍼티를 **상속**받는다.
 </br>
 </br>
+
 - 객체 리터럴을 사용해 생성한 객체는 모두 같은 프로토타입 객체를 갖는다. Object.prototype
 - new 키워드와 생성자를 사용해 만든 객체는 생성자 함수의 prototype 프로퍼티 값을 자신의 프로토타입으로 사용. 즉, new Object()로 생성한 객체는 객체 리터럴과 마찬가지로 Object.prototype에서 상속받는다.
 - new Date() 로 생성한 객체의 프로토타입은 Date.prototype.
