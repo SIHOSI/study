@@ -163,4 +163,84 @@ a.length = 5 // 길이는 5 요소는 없음
 </br>
 
 ## 배열 요소 추가와 삭제
+- 가장 단순한 방법은 새 인덱스에 값을 할당하는 방법.
+- push() 메서드는 배열 마지막에 값을 추가.
+```javascript
+let a = []
+a.push('zero')
+a.push('one','two') // a = 'zero', 'one', 'two'
+```
+- push()는 a[a.length] 에 값을 할당하는 것과 같다.
+- unshift() 를 사용해 배열의 맨 앞에 값을 삽입하고 기존의 요소를 뒤로 미는 것도 가능.
+- pop() 메서드는 push()의 반대로 배열의 마지막 요소를 제거하고 그 값을 반환하며 배열의 길이를 1 줄인다.
+- shift() 메서드는 배열의 첫 번째 요소를 제거해 반환하며 길이를 1 중리고 나머지 요소를 모두 앞으로 당긴다.
+
+</br>
+
+- delete 연산자로 배열 요소를 삭제 할 수 있다.
+```javascript
+let a = [1,2,3]
+delete a[2] // 1,2
+2 in a // false
+a.length // 3 delete는 길이에 영향을 주지 않는다.
+```
+
+- 배열 요소를 삭제하는 것은 그 요소에 undefined를 할당하는 것과 비슷하다. 완전 같지는 않다.
+- length프로퍼티가 변하지 않고 빈 공간을 메우기 위해 요소가 이동하지도 않는다.
+
+</br>
+
+- 배열 요소를 삽입, 삭제, 대체하는 범용 메서드 splice() 가 있다.
+- length 프로퍼티를 변경하고 필요에 따라 요소를 앞뒤로 움직인다.
+
+
+</br>
+
+## 배열 순회
+- 가장 쉬운 방법은 for/of
+```javascript
+let letters = [...'hello']
+let string = ''
+for(let letter of letters)
+    string += letter
+console.log(string) // hello
+```
+- 오름차순으로 요소를 반환
+- 성긴 배열도 마찬가지로 존재하지 않는 배열 요소에 대해서는 undefined를 반환.
+- 각 요소의 인덱스가 필요하다면 entries()메서드와 분해 할당을 이용.
+  
+```javascript
+let everyother = ''
+for(let [index, letter] of letters.entries()) {
+    if (index % 2 == 0)
+        everyother += letter
+}
+everyother // hlo
+```
+
+</br>
+
+- forEach()도 배열을 순회하는 좋은 방법
+- for루프의 변형이 아니라 배열 순회를 함수형으로 바꾼 배열 메서드.
+- forEach()는 전달 받은 함수를 각 배열 요소에서 호출.
+
+```javascript
+let uppercase = ''
+letters.forEach(letter => {
+    uppercase += letter.toUpperCase()
+})
+uppercase // HELLO
+```
+
+- 배열을 순서대로 순회하며 배열 인덱스를 함수의 두 번째 인자로 전달.
+- for/of와 달리 forEach()는 성긴 배열을 인식, 존재하지 않는 요소에 대해서는 함수를 호출하지 않는다.
+
+```javascript
+let a = [1,2,3]
+delete a[1]
+a.forEach(n => console.log(n)) // 1 3
+let b = [1,2,3]
+b[1] = undefined
+b.forEach(n => console.log(n)) // 1 undefined 3 // 삭제는 undefined 할당과 비슷한거지 같지 않다.
+```
 
