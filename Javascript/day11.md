@@ -14,25 +14,28 @@
 - 이 메소드는 배열 비슷한 객체에서도 동작.
 - 문자열은 문자로 구성된 배열처럼 동작.
 - ES6에서 형식화 배열(typed array) 라 부르는 새로운 배열 클래스를 도입. 길이가 고정적이며 요소 타입도 숫자로 고정되어 있다. 빠르고 이진 데이터에 바이트 수준에서 접근 가능.
-  
-</br>
-</br>
 
+</br>
+</br>
 
 ## 1. 배열 생성
+
 - 배열을 만드는 방법
   - 배열 리터럴
   - 이터러블 객체에 분해 연산자 ... 적용
   - Array() 생성자
   - Array.of()와 Array.from() 팩토리 메서드
-  
+
 </br>
 
 ### 배열 리터럴
+
 - 배열 요소를 대괄호 안에서 콤마로 구분한 리스트 형태.
+
 ```javascript
-let misc = [1.1, true, "a"]
+let misc = [1.1, true, 'a'];
 ```
+
 - 임의의 표현식을 써도 된다.
 - 배열 리터럴 안에 객체 리터럴이나 다른 배열 리터럴을 써도 된다.
 
@@ -42,22 +45,26 @@ let misc = [1.1, true, "a"]
 - 값을 생략한 위치에 실제로 배열 요소가 존재하지는 않지만 검색하면 undefined가 반환.
 
 ```javascript
-let undefs = [,,] // 요소가 없지만 길이가 2인 배열
+let undefs = [, ,]; // 요소가 없지만 길이가 2인 배열
 ```
+
 - 배열 리터럴 문법은 마지막에 콤마를 허용, [,,]의 길이는 3이 아니라 2이다.
 
 </br>
 
 ### 분해 연산자
+
 ```javascript
-let b = [0, ...a, 4] // a = [1,2,3] , b== 0,1,2,3,4
+let b = [0, ...a, 4]; // a = [1,2,3] , b== 0,1,2,3,4
 ```
+
 - 분해 연산자는 배열을 얕게 복사할 때도 유용하다.
+
 ```javascript
-let original = [1,2,3]
-let copy = [...original]
-copy[0] = 0 // 사본을 수정해도 원본에는 영향이 없다.
-original[0] // 1
+let original = [1, 2, 3];
+let copy = [...original];
+copy[0] = 0; // 사본을 수정해도 원본에는 영향이 없다.
+original[0]; // 1
 ```
 
 - 분해 연산자는 모든 이터러블 객체에 동작.
@@ -65,6 +72,7 @@ original[0] // 1
 - 문자열 역시 이터러블
 - 세트 또한 이터러블
 - 배열에서 중복된 요소를 제거하고 싶을 때는 먼저 배열을 세트로 변환한 다음, 분해 연산자를 써서 배열로 되돌릴 수 있다.
+
 ```javascript
 let letters = [...'hello'] // 'h', 'e', 'l', 'l', 'o'
 [...new Set(letters)] // ['h', 'e', 'l', 'o']
@@ -73,22 +81,29 @@ let letters = [...'hello'] // 'h', 'e', 'l', 'l', 'o'
 </br>
 
 ### Array() 생성자
+
 - 인자 없이 호출
+
 ```javascript
-let a = new Array() // 요소 없는 빈 배열을 생성, [] 와 동등
+let a = new Array(); // 요소 없는 빈 배열을 생성, [] 와 동등
 ```
+
 - 배열 길이를 나타내는 숫자 인자 하나로 호출
+
 ```javascript
-let a = new Array(10) // 지정된 길이를 가진 배열 생성.
+let a = new Array(10); // 지정된 길이를 가진 배열 생성.
 ```
+
 - 배열 요소를 두 개 이상 쓰거나 숫자가 아닌 요소를 하나만 넘겨 호출
+
 ```javascript
-let a = new Array(5,4,3,2,1,"test") // 생성자의 인자가 새 배열의 인자가 된다.
+let a = new Array(5, 4, 3, 2, 1, 'test'); // 생성자의 인자가 새 배열의 인자가 된다.
 ```
 
 </br>
 
 ### Array.of()
+
 - Array() 생성자는 숫자 인자가 하나면 길이로, 숫자 인자가 두 개 이상 있으면 이들을 각각 요소로 취급.
 - 따라서, Array() 생성자로는 숫자 요소가 하나만 있는 배열은 생성할 수 없다.
 - ES6의 Array.of() 함수가 이 문제를 해결.
@@ -97,17 +112,18 @@ let a = new Array(5,4,3,2,1,"test") // 생성자의 인자가 새 배열의 인�
 </br>
 
 ```javascript
-Array.of() // []
-Array.of(10) // [10]
-Array.of(1,2,3) // [1,2,3]
+Array.of(); // []
+Array.of(10); // [10]
+Array.of(1, 2, 3); // [1,2,3]
 ```
 
 ### Array.from()
+
 - 첫 번째 인자로 이터러블 객체나 배열 비슷한 객체를 받으며, 해당 객체의 요소로 새 배열을 만들어 반환.
 - Array.from(iterable) 은 [...iterable] 과 동등하다.
 
 ```javascript
-let copy = Array.from(original) // 배열을 쉽게 복사할 수 있다.
+let copy = Array.from(original); // 배열을 쉽게 복사할 수 있다.
 ```
 
 - **배열 비슷한 객체를 진정한 배열로 바꾸는 방법**.
@@ -118,15 +134,16 @@ let copy = Array.from(original) // 배열을 쉽게 복사할 수 있다.
 </br>
 
 ## 성긴 배열
+
 - 인덱스가 연속적이지 않은 배열
 - 일반적으로 배열의 length 프로퍼티는 배열에 포함된 요소의 개수.
 - 성긴 배열의 경우 length 프로퍼티의 값이 요소의 개수 보다 크다.
 - Array() 생성자를 사용하거나, 현재 배열 length 보다 큰 인덱스에 요소를 할당하면 만들어진다.
 
 ```javascript
-let a = new Array(5) // 요소가 없지만 a.length는 5
-a = [] // 요소가 없고 length가 0
-a[1000] = 0 // 요소 하나를 추가하지만 길이는 1001
+let a = new Array(5); // 요소가 없지만 a.length는 5
+a = []; // 요소가 없고 length가 0
+a[1000] = 0; // 요소 하나를 추가하지만 길이는 1001
 ```
 
 - delete 연산자를 사용해 성긴 배열을 만들 수 있다.
@@ -135,15 +152,16 @@ a[1000] = 0 // 요소 하나를 추가하지만 길이는 1001
 - [1,,3] 처럼 리터럴에 콤바를 반복하면 성긴 배열이 만들어진다.
 
 ```javascript
-let a1 = [,] // 요소가 없고 길이는 1
-let a2 = [undefined] // undefined 요소가 하나 존재.
-0 in a1 // false 인덱스 0 에 요소가 없음
-0 in a2 // true 인덱스 0에 요소 undefined 존재.
+let a1 = [,]; // 요소가 없고 길이는 1
+let a2 = [undefined]; // undefined 요소가 하나 존재.
+0 in a1; // false 인덱스 0 에 요소가 없음
+0 in a2; // true 인덱스 0에 요소 undefined 존재.
 ```
 
 </br>
 
 ## 배열 길이
+
 - 모든 배열에는 length 프로퍼티 존재
 - 이 프로퍼티는 일반적인 객체와 배열을 구분하는 특징.
 - 일반적인 배열에서 length 프로퍼티는 인덱스에 1을 더한 값
@@ -154,22 +172,25 @@ let a2 = [undefined] // undefined 요소가 하나 존재.
   - length 프로퍼티를 현재 값보다 작은 n 으로 지정하면 n 이상인 배열 요소는 모두 삭제.
 
 ```javascript
-a = [1,2,3,4,5]
-a.length = 3 // a는 [1,2,3]
-a.length = 0 // 요소 전체를 삭제 [] 와 동등
-a.length = 5 // 길이는 5 요소는 없음
+a = [1, 2, 3, 4, 5];
+a.length = 3; // a는 [1,2,3]
+a.length = 0; // 요소 전체를 삭제 [] 와 동등
+a.length = 5; // 길이는 5 요소는 없음
 ```
 
 </br>
 
 ## 배열 요소 추가와 삭제
+
 - 가장 단순한 방법은 새 인덱스에 값을 할당하는 방법.
 - push() 메서드는 배열 마지막에 값을 추가.
+
 ```javascript
-let a = []
-a.push('zero')
-a.push('one','two') // a = 'zero', 'one', 'two'
+let a = [];
+a.push('zero');
+a.push('one', 'two'); // a = 'zero', 'one', 'two'
 ```
+
 - push()는 a[a.length] 에 값을 할당하는 것과 같다.
 - unshift() 를 사용해 배열의 맨 앞에 값을 삽입하고 기존의 요소를 뒤로 미는 것도 가능.
 - pop() 메서드는 push()의 반대로 배열의 마지막 요소를 제거하고 그 값을 반환하며 배열의 길이를 1 줄인다.
@@ -178,11 +199,12 @@ a.push('one','two') // a = 'zero', 'one', 'two'
 </br>
 
 - delete 연산자로 배열 요소를 삭제 할 수 있다.
+
 ```javascript
-let a = [1,2,3]
-delete a[2] // 1,2
-2 in a // false
-a.length // 3 delete는 길이에 영향을 주지 않는다.
+let a = [1, 2, 3];
+delete a[2]; // 1,2
+2 in a; // false
+a.length; // 3 delete는 길이에 영향을 주지 않는다.
 ```
 
 - 배열 요소를 삭제하는 것은 그 요소에 undefined를 할당하는 것과 비슷하다. 완전 같지는 않다.
@@ -193,29 +215,29 @@ a.length // 3 delete는 길이에 영향을 주지 않는다.
 - 배열 요소를 삽입, 삭제, 대체하는 범용 메서드 splice() 가 있다.
 - length 프로퍼티를 변경하고 필요에 따라 요소를 앞뒤로 움직인다.
 
-
 </br>
 
 ## 배열 순회
+
 - 가장 쉬운 방법은 for/of
+
 ```javascript
-let letters = [...'hello']
-let string = ''
-for(let letter of letters)
-    string += letter
-console.log(string) // hello
+let letters = [...'hello'];
+let string = '';
+for (let letter of letters) string += letter;
+console.log(string); // hello
 ```
+
 - 오름차순으로 요소를 반환
 - 성긴 배열도 마찬가지로 존재하지 않는 배열 요소에 대해서는 undefined를 반환.
 - 각 요소의 인덱스가 필요하다면 entries()메서드와 분해 할당을 이용.
-  
+
 ```javascript
-let everyother = ''
-for(let [index, letter] of letters.entries()) {
-    if (index % 2 == 0)
-        everyother += letter
+let everyother = '';
+for (let [index, letter] of letters.entries()) {
+  if (index % 2 == 0) everyother += letter;
 }
-everyother // hlo
+everyother; // hlo
 ```
 
 </br>
@@ -225,28 +247,29 @@ everyother // hlo
 - forEach()는 전달 받은 함수를 각 배열 요소에서 호출.
 
 ```javascript
-let uppercase = ''
-letters.forEach(letter => {
-    uppercase += letter.toUpperCase()
-})
-uppercase // HELLO
+let uppercase = '';
+letters.forEach((letter) => {
+  uppercase += letter.toUpperCase();
+});
+uppercase; // HELLO
 ```
 
 - 배열을 순서대로 순회하며 배열 인덱스를 함수의 두 번째 인자로 전달.
 - for/of와 달리 forEach()는 성긴 배열을 인식, 존재하지 않는 요소에 대해서는 함수를 호출하지 않는다.
 
 ```javascript
-let a = [1,2,3]
-delete a[1]
-a.forEach(n => console.log(n)) // 1 3
-let b = [1,2,3]
-b[1] = undefined
-b.forEach(n => console.log(n)) // 1 undefined 3 // 삭제는 undefined 할당과 비슷한거지 같지 않다.
+let a = [1, 2, 3];
+delete a[1];
+a.forEach((n) => console.log(n)); // 1 3
+let b = [1, 2, 3];
+b[1] = undefined;
+b.forEach((n) => console.log(n)); // 1 undefined 3 // 삭제는 undefined 할당과 비슷한거지 같지 않다.
 ```
 
 ## 배열 메서드
 
 ### 배열 이터레이터 메서드
+
 - 배열 요소를 순서대로 함수에 전달하는 방식으로 동작.
 - 배열 요소를 순회, 변환, 필터, 체크, 축소 할 수 있다.
 - 모두 첫 번째 인자로 함수를 받으며 각 배열 요소 또는 일부 요소에 대해 그 함수를 한 번씩 호출.
@@ -259,75 +282,81 @@ b.forEach(n => console.log(n)) // 1 undefined 3 // 삭제는 undefined 할당과
 </br>
 
 - forEach()
+
   - 첫 번째 인자는 함수, 배열 요소의 값, 인덱스, 배열 자체를 인자로 전달해 이 함수를 호출.
   - ```javascript
-    let data = [1,2,3,4,5], sum = 0
-    data.forEach( value => {
-        sum += value
-    })
+    let data = [1, 2, 3, 4, 5],
+      sum = 0;
+    data.forEach((value) => {
+      sum += value;
+    });
     ```
   - 모든 요소를함수에 전달하기 전에 반복을 멈출 수 없다. break문등을 쓸 수 없다.
 
 - map()
+
   - 각 배열 요소를 함수에 전달해 호출, 그 함수가 반환한 값으로 이루어진 배열을 반환.
   - ```javascript
-    let a = [1,2,3]
-    a.map(x => x*x) //1,4,9
+    let a = [1, 2, 3];
+    a.map((x) => x * x); //1,4,9
     ```
   - 전달하는 함수는 값을 반환해야 한다.
   - 기존 배열을 수정하지 않는다.
   - 성긴 배열이라면 존재하지 않는 요소에 대해서는 함수를 호출하지 않지만, 반환된 배열 역시 같은 위치에 갭이 있고 길이 또한 같다.
 
 - filter()
+
   - 기존 배열의 일부만 포함하는 부분 집합을 반환
   - 전달하는 함수를 기준으로 하며 이 함수는 true, false 를 반환.
   - 반환 값이 true이거나 true로 변환될 수 있는 값이면 해당 요소는 반환되는 배열에 포함.
   - ```javascript
-    let a = [5,4,3,2,1]
-    a.filter(x => x<3) // [2,1]
-    a.filter((x,i) => i%2 === 0) // [5,3,1]
+    let a = [5, 4, 3, 2, 1];
+    a.filter((x) => x < 3); // [2,1]
+    a.filter((x, i) => i % 2 === 0); // [5,3,1]
     ```
   - 성긴 배열에서 존재하지 않는 값은 건너뛰며, 반환되는 배열은 항상 빽빽한 배열이다.
   - 이 특징을 이용해서 성긴 배열에서 갭을 제거 할 수 있다.
   - ```javascript
-    let dense = sparse.filter( () => true)
+    let dense = sparse.filter(() => true);
     ```
   - 갭과 함께 undefined, null 요소도 제거 할 수 있다.
   - ```javascript
-    a = a.filter(x => x !== undefined && x !== null)
+    a = a.filter((x) => x !== undefined && x !== null);
     ```
 
 - find(), findIndex()
+
   - 판별 함수에서 true 같은 값을 반환하는 요소를 찾아 배열을 순회한다는 점은 filter()와 같다.
   - filter()와 달리 기준을 만족하는 첫 번째 요소를 만나면 즉시 순회를 멈춘다.
   - 요소를 찾으면 find()는 그 요소를, findIndex()는 그 요소의 인덱스를 반환.
   - 찾지 못하면 find()는 undefined, findIndex()는 -1 을 반환한다.
   - ```javascript
-    let a = [1,2,3,4,5]
-    a.findIndex(x => x ===3)
-    a.find(x => x % 5 === 0)
-    a.find(x => x % 7 === 0)
+    let a = [1, 2, 3, 4, 5];
+    a.findIndex((x) => x === 3);
+    a.find((x) => x % 5 === 0);
+    a.find((x) => x % 7 === 0);
     ```
 
 - every(), some()
+
   - 배열 요소에 판별 함수를 적용하고 결과에 따라 true, false 반환.
   - every() 는 판별 함수가 배열의 모든 요소에 대해 true를 반환할 때만 true를 반환.
   - some() 는 배열 요소 중 판별 함수가 true를 반환하는 것이 하나라도 있으면 true를 반환.
   - ```javascript
-    let a = [1,2,3,4,5]
-    a.every(x => x < 10) // true
-    a.some(isNaN) // false
-    a.some(x => x%2 === 0) // true
+    let a = [1, 2, 3, 4, 5];
+    a.every((x) => x < 10); // true
+    a.some(isNaN); // false
+    a.some((x) => x % 2 === 0); // true
     ```
   - every(),some() 모두 어떤 값을 반환할지 확실해지는 순간 순회를 멈춘다.
 
 - reduce(), reduceRight()
   - 제공하는 함수를 사용해 배열 요소를 값 하나로 만든다.
   - ```javascript
-    let a = [1,2,3,4,5]
-    a.reduce((x,y) => x+y, 0) // 15
-    a.reduce((x,y) => x*y, 1) // 120
-    a.reduce((x,y) => (x>y) ? x : y) // 5
+    let a = [1, 2, 3, 4, 5];
+    a.reduce((x, y) => x + y, 0); // 15
+    a.reduce((x, y) => x * y, 1); // 120
+    a.reduce((x, y) => (x > y ? x : y)); // 5
     ```
   - 인자 두 개를 받는다.
   - 첫 번째 인자는 축소 동작을 행하는 함수.
@@ -340,84 +369,90 @@ b.forEach(n => console.log(n)) // 1 undefined 3 // 삭제는 undefined 할당과
   - 때로는 reduce()에 집착하지 않고 일반적인 루프 구조를 사용해 배열을 처리하는 편이 코드를 읽고 이해하기 쉬울 때도 있다.
 
 ### flat(), flatMap()을 이용한 배열 평탄화
-  - 기존 배열과 같은 요소로 이루어진 평탄한(중첩되지 않은) 새 배열을 반환한다.
-  - ```javascript
-    [1, [2,[3]]].flat() // [1,2,[3]]
-    let a = [1,[2,[3,[4]]]]
-    a.flat(4) // [1,2,3,4]
-    ```
-  - 인자없이 flat()을 호출하면 한단계만 평탄화 한다.
-  - flatMap() 은 map()와 똑같이 동작하지만, 반환하는 배열이 flat()에 전달한 것처럼 자동으로 평탄화 된다.
-  - 즉, a.flatMap(f) === a.map(f).flat()
+
+- 기존 배열과 같은 요소로 이루어진 평탄한(중첩되지 않은) 새 배열을 반환한다.
+- ```javascript
+  [1, [2, [3]]].flat(); // [1,2,[3]]
+  let a = [1, [2, [3, [4]]]];
+  a.flat(4); // [1,2,3,4]
+  ```
+- 인자없이 flat()을 호출하면 한단계만 평탄화 한다.
+- flatMap() 은 map()와 똑같이 동작하지만, 반환하는 배열이 flat()에 전달한 것처럼 자동으로 평탄화 된다.
+- 즉, a.flatMap(f) === a.map(f).flat()
 
 ### concat()으로 배열 병합
-  - 기존 배열의 요소를 포함하고 그 뒤에 concat()의 인자를 포함하는 새 배열을 만들어 반환.
-  - 배열의 배열을 재귀적으로 평탄화하지는 않는다.
-  - 기존 배열을 수정하지 않는다.
-  - ```javascript
-    let a = [1,2,3]
-    a.concat(4,5) // [1,2,3,4,5]
-    a.concat([4,5], [6,7]) // [1,2,3,4,5,6,7] 평탄화
-    a.concat(4, [5,[6,7]]) // [1,2,3,4,5,[6,7]] // 중텁된 배열은 평탄화 되지 않는다.
-    ```
+
+- 기존 배열의 요소를 포함하고 그 뒤에 concat()의 인자를 포함하는 새 배열을 만들어 반환.
+- 배열의 배열을 재귀적으로 평탄화하지는 않는다.
+- 기존 배열을 수정하지 않는다.
+- ```javascript
+  let a = [1, 2, 3];
+  a.concat(4, 5); // [1,2,3,4,5]
+  a.concat([4, 5], [6, 7]); // [1,2,3,4,5,6,7] 평탄화
+  a.concat(4, [5, [6, 7]]); // [1,2,3,4,5,[6,7]] // 중텁된 배열은 평탄화 되지 않는다.
+  ```
 
 ### 스택과 큐 메서드
-  - push(), pop() 는 배열을 스택처럼 다루는 메서드
-  - push() 메서드는 배열의 끝에 하나 이상의 새 요소를 추가하고 새 길이를 반환.
-  - pop()은 그 반대로 마지막 요소를 꺼내서 반환하며 배열의 길이를 줄인다.
-  - 두 메서드 모두 기존 배열을 수정한다.
-  - ```javascript
-    let stack = []
-    stack.push(1,2) // [1,2]
-    stack.pop() // [1]
-    stack.push([4,5]) //[1,[4,5]]
-    stack.pop() // [1]
-    ```
-  - push()는 전달한 배열을 평탄화하지 않는다.
-  - 분해 연산자를 직접 사용해 평탄화 할 수 있다.
-  - ```javascript
-    a.push(...values)
-    ```
-  - unshift()와 shift()메서드는 배열의 앞부분에서 이루어진다.
-  - unshift()는 시작 부분에 요소를 추가하고, 기존 배열을 뒤로 밀고, 새 길이를 반환.
-  - shift()는 첫 번째 요소를 반환하고, 기존의 배열을 앞으로 당긴다.
-  - shift()와 push() 를 써서 큐 데이터 구조를 만들 수 있다.
-  - ```javascript
-    let q = []
-    q.push(1,2) // [1,2]
-    q.shift() // [2]
-    q.push(3) // [2,3]
-    q.shift() // [3]
-    ```
-  - unshift()에 인자 여려 개를 전달하면 모두 한 번에 삽입된다. 하나씩 넣을 때와는 결과가 다르다.
-  - ```javascript
-    let a = []
-    a.unshift(1) // [1]
-    a.unshift(2) // [2,1]
-    a = []
-    a.unshift(1,2) // [1,2]
-    ```
+
+- push(), pop() 는 배열을 스택처럼 다루는 메서드
+- push() 메서드는 배열의 끝에 하나 이상의 새 요소를 추가하고 새 길이를 반환.
+- pop()은 그 반대로 마지막 요소를 꺼내서 반환하며 배열의 길이를 줄인다.
+- 두 메서드 모두 기존 배열을 수정한다.
+- ```javascript
+  let stack = [];
+  stack.push(1, 2); // [1,2]
+  stack.pop(); // [1]
+  stack.push([4, 5]); //[1,[4,5]]
+  stack.pop(); // [1]
+  ```
+- push()는 전달한 배열을 평탄화하지 않는다.
+- 분해 연산자를 직접 사용해 평탄화 할 수 있다.
+- ```javascript
+  a.push(...values);
+  ```
+- unshift()와 shift()메서드는 배열의 앞부분에서 이루어진다.
+- unshift()는 시작 부분에 요소를 추가하고, 기존 배열을 뒤로 밀고, 새 길이를 반환.
+- shift()는 첫 번째 요소를 반환하고, 기존의 배열을 앞으로 당긴다.
+- shift()와 push() 를 써서 큐 데이터 구조를 만들 수 있다.
+- ```javascript
+  let q = [];
+  q.push(1, 2); // [1,2]
+  q.shift(); // [2]
+  q.push(3); // [2,3]
+  q.shift(); // [3]
+  ```
+- unshift()에 인자 여려 개를 전달하면 모두 한 번에 삽입된다. 하나씩 넣을 때와는 결과가 다르다.
+- ```javascript
+  let a = [];
+  a.unshift(1); // [1]
+  a.unshift(2); // [2,1]
+  a = [];
+  a.unshift(1, 2); // [1,2]
+  ```
 
 ### 하위 배열
+
 - 일종의 연속적인 영역인 하위 배열을 슬라이스라 한다.
 
 </br>
 
 - slice()
+
   - 지정된 배열의 하위 배열을 반환.
   - 두 개의 인자는 각각 반환될 슬라이스의 시작과 끝 위치.
   - 첫 번째 인자로 지정된 요소에서 시작, 두 번째 인자로 지정된 요소 바로 앞까지가 포함.
   - 인자를 하나만 사용한다면 반환된 배열은 해당 위치부터 원래 배열의 마지막 요소까지 포함된다.
   - ```javascript
-    let a = [1,2,3,4,5]
-    a.slice(0,3) // [1,2,3]
-    a.slice(3) // [4,5]
-    a.slice(1,-1) // [2,3,4]
-    a.slice(-3,-2) // [3]
+    let a = [1, 2, 3, 4, 5];
+    a.slice(0, 3); // [1,2,3]
+    a.slice(3); // [4,5]
+    a.slice(1, -1); // [2,3,4]
+    a.slice(-3, -2); // [3]
     ```
   - 원래 배열을 수정하지 않는다.
 
 - splice()
+
   - 배열에 요소를 삽입하거나 제거하는 범용 메서드.
   - 원래 배열을 수정한다.
   - 요소를 삭제하거나 삽입할 수 있고 동시에 할 수 있다.
@@ -426,28 +461,31 @@ b.forEach(n => console.log(n)) // 1 undefined 3 // 삭제는 undefined 할당과
   - 두 번째 인자는 제거할 요소의 개수, 생략 시 배열 마지막까지.
   - 제거한 것이 없다면 빈 배열을 반환.
   - ```javascript
-    let a = [1,2,3,4,5,6,7,8]
-    a.splice(4) // [1,2,3,4]
-    a.splice(1,2) // [1,4]
-    a.splice(1,1) // [1]
-    let b = [1,2,3,4,5]
-    b.splice(2,0,"a","b") // [1,2,'a','b',3,4,5]
-    b.splice(2,2,[1,2],3) // [1,2,[1,2], 3,3,4,5]
+    let a = [1, 2, 3, 4, 5, 6, 7, 8];
+    a.splice(4); // [1,2,3,4]
+    a.splice(1, 2); // [1,4]
+    a.splice(1, 1); // [1]
+    let b = [1, 2, 3, 4, 5];
+    b.splice(2, 0, 'a', 'b'); // [1,2,'a','b',3,4,5]
+    b.splice(2, 2, [1, 2], 3); // [1,2,[1,2], 3,3,4,5]
     ```
   - 두 번째 이후로 받는 인자는 개수 제한이 없고 첫 번째 인자에서 지정한 위치에서부터 배열에 삽입된다.
   - 배열을 있는 그대로 삽입하고 평탄화 하지 않는다.
 
 - fill()
+
   - 배열의 요소 또는 슬라이스를 지정된 값으로 바꾼다.
   - 원래 배열을 수정한다.
   - ```javascript
-    let a = new Array(5)
-    a.fill(0) // [0,0,0,0,0]
-    a.fill(9,1) // [0,9,9,9,9]
-    a.fill(8,2,-1) // [0,9,8,8,9]
+    let a = new Array(5);
+    a.fill(0); // [0,0,0,0,0]
+    a.fill(9, 1); // [0,9,9,9,9]
+    a.fill(8, 2, -1); // [0,9,8,8,9]
     ```
   - 첫 번째 인자는 배열 요소로 사용할 값.
+
   - 두 번째 인자는 선택 사항으로 시작 인덱스. 생략 시 인덱스 0 부터 시작.
+
   - 세 번째 인자는 마지막 인덱스로 이 바로 앞까지 진행.
 
 ### 배열 검색과 정렬 메서드
