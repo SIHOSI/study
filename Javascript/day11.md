@@ -571,3 +571,5 @@ b.forEach((n) => console.log(n)); // 1 undefined 3 // 삭제는 undefined 할당
   ```
 
   
+
+  
