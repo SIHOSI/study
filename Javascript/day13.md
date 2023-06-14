@@ -8,7 +8,7 @@ put과 patch 모두 CRUD의 UPDATING을 맡고 있다.
 
 예를 들어
 
-```json
+```java
 {name: 'john', age: 30, job: 'gamer'}
 
 // put
